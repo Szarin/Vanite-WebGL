@@ -1,0 +1,100 @@
+.logo {
+    padding-left: 1%;
+    padding-top: 12.5px;
+    position: absolute;
+    width: 4%;
+    height: 60%;
+    cursor: pointer;
+}
+.logo:hover {
+    transition: 0.5s;
+    color: grey;
+    opacity: 0.2;
+}
+
+header{
+    background-color: #16171d;
+    width: 100%;
+    border-bottom: 2px solid grey;
+    position:fixed;
+    z-index: 12;
+    top: 0;
+    right: 0;
+}
+nav ul{
+    list-style-type: none;
+    display: flex;
+    justify-content:end;
+}
+nav li{
+    margin-right: 15px;
+    font-family: retroicaregular;
+}
+
+nav a
+{
+    padding: 10px 35px;
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.05);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* mise en couleur et animation des différents boutons de navigation */
+#nav2 a
+{
+    border: 3px solid #f1f1f1;
+    color: #f1f1f1;
+}
+
+#nav2 a:hover
+{
+    color:  	#FF1493;
+    border: 3px solid  	#FF1493;
+}
+
+#nav3 a
+{
+    border: 3px solid #f1f1f1;
+    color:#f1f1f1;
+}
+
+#nav3 a:hover
+{
+    color: #4169E1;
+    border: 3px solid #4169E1;
+}
+
+.icon
+{
+    position: absolute;
+    width: 5%;
+    height: 10%;
+    cursor: pointer;    
+}
+
+#icon1 
+{
+    top: 98%;
+    right: 45%;
+}
+
+#icon2 
+{
+    top: 98%;
+    right: 55%;
+}
+
+#icon3
+{
+    right: 45%;
+}
+
+#icon4 
+{
+    padding-bottom: 50px;
+    right: 55%;
+}

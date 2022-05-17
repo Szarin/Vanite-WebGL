@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style-rendu.css">
+        <link rel="stylesheet" href="css/navbar.css">
+        <title>WebGL : Rendu</title>
+    </head>
+    <body>
+        <header id="menu">
+            <a href="index.html"><img src="./res/image/index.png" class="logo"></a>
+            <nav>
+                <ul>
+                    <li id="nav2"><a href="rendu.html">Rendering</a></li>
+                    <li id="nav3"><a href="description.html">Description</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- API importe du site de Three.js -->
+        <script src="./threelib/three.min.js">
+        </script>
+        <script src="./threelib/OBJLoader.js">
+        </script>
+        <script src="./threelib/OrbitControls.js">
+        </script>
+        <script src="./threelib/stats.module.js">
+        </script>
+
+        <!-- Bibliotheques en local -->
+        <script src="./lib/Coordinates.js"></script>
+        <script src="./lib/jquery-1.8.3.min.js"></script>
+        <script src="./lib/dat.gui.min.js"></script>
+        <script type="text/x-glsl" id="vertex">
+            varying vec3 vNormal;
+            varying vec3 vViewPosition;
+            varying vec3 vWorldPosition;
+            
+            void main() {
+            
+                gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+                vNormal = normalize( normalMatrix * normal );
+                vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+                vViewPosition = -mvPosition.xyz;
+                vWorldPosition = position;
+            
+            }
+        </script>
+        <script type="text/x-glsl" id="fragment">
+            uniform vec3 uMaterialColor;
+            uniform vec3 uSpecularColor;
+            
+            uniform vec3 uDirLightPos;
+            uniform vec3 uDirLightColor;
+            
+            uniform vec3 uAmbientLightColor;
+            
+            uniform float uKd;
+            uniform float uKs;
+            uniform float shininess;
+            
+            uniform float uGroove;
+            
+            varying vec3 vNormal;
+            varying vec3 vViewPosition;
+            varying vec3 vWorldPosition;
+            
+            void main() {
+            
+                // ambient
+                gl_FragColor = vec4( uAmbientLightColor, 1.0 );
+            
+                // compute direction to light
+                vec4 lDirection = viewMatrix * vec4( uDirLightPos, 0.0 );
+                vec3 lVector = normalize( lDirection.xyz );
+            
+                vec3 normal = normalize( vNormal );
+                float diffuse;
+            
+            
+                // Student: use these two jiggledNormals instead of the regular normal
+                // in the reflection model that follows.
+                for ( int i = 0; i < 2; i++) {
+                    vec3 offset = (i==0) ? vWorldPosition : -vWorldPosition;
+                    offset.y = 0.0;
+                    vec3 jiggledNormal = normalize( normal + uGroove * normalize( offset ) );
+            
+                    // diffuse
+                    diffuse = max (dot (jiggledNormal, lVector), 0.0f);
+                    gl_FragColor.rgb += uKd * uMaterialColor * uDirLightColor * diffuse;
+            
+                    // specular: N * H to a power. H is light vector + view vector
+                    vec3 viewPosition = normalize( vViewPosition );
+                    vec3 pointHalfVector = normalize( lVector + viewPosition );
+                    float pointDotNormalHalf = max( dot( jiggledNormal, pointHalfVector ), 0.0 );
+                    float specular = uKs * pow( pointDotNormalHalf, shininess );
+                    specular *= diffuse*(2.0 + shininess)/8.0;
+                
+                    // This can give a hard termination to the highlight, but it's better than some weird sparkle.
+                    // Note: we don't quit here because the solution will use this code twice.
+                    if (diffuse <= 0.0) {
+                        specular = 0.0;
+                    }
+                
+                    gl_FragColor.rgb += uDirLightColor * uSpecularColor * specular;
+            
+                }
+            
+            }
+        </script>
+        <script type="text/javascript" src="shaders.js"></script>
+
+        <!-- Un titre centre -->
+        <!-- <h1 class="centre">Projet peinture : La vanite</h1> -->
+
+        <div id="gui-container"></div>
+        
+        <!-- Pour mettre le rendu Web GL centre -->
+        <div id="webGL" class="rendering"></div>
+        
+        <!-- Mon script avec un chemin relatif -->
+        <script src="vanite.js"></script>
+
+        <script>
+            addToDOM();// Execute la fonction qui ajoute le rendu
+        </script>
+
+        
+        <footer>
+            <nav>
+                <ul>
+                    <a href="https://github.com/Szarin" ><img id="icon1" class="icon" src="./res/image/github.png"></a>
+                    <a href="https://www.linkedin.com/in/guillaume-schneider/"><img id="icon2" class="icon" src="./res/image/linkedin.png"></a>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>

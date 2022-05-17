@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<HTML lang=fr>
+    <HEAD>
+        <TITLE>WebGL : Description</TITLE>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/style-description.css">
+        <link rel="stylesheet" href="css/navbar.css">
+    </HEAD>
+    <body>
+        <header id="menu">
+            <a href="index.html"><img src="./res/image/index.png" class="logo"></a>
+            <nav>
+                <ul>
+                    <li id="nav2"><a href="rendu.html">Rendering</a></li>
+                    <li id="nav3"><a href="description.html">Description</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="bloc-page">
+            <section>
+                <p><img src="img.jpg" alt="La Vanité ou l'allégorie humaine" style="width: 101%;"></p>  
+                <article>
+                    <div>
+                        <h3 id="title", class="box_principale">Description</h3>
+                        <p id="paragraphe_principal">Project of realization of a painting in a 3D scene under WebGL concretizing the process of image synthesis. The representation is the the painting "La Vanité ou l'allégorie Humaine".</p>
+                    </div> 
+                    <div class="box">
+                        <h4 class="sous-titre">La Vanité ou l'allégorie humaine</h4> 
+                        <!-- <p class="sous-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+                        <p>The first representation of vanity or human allegory in painting dates back to the 15th century with the painter Philippe de Champaigne, to whom it is attributed. The style is associated with a set of emblems and objects whose possession seems vain, futile, derisory. This has the effect of demonstrating the passion of human life through the passing of time and the irremediable death of man.</p>
+                    </div>
+                    <div class="box">
+                            <h4 class="sous-titre">The technical aspects</h3>
+                            <!-- <p class="sous-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est 
+                                laborum.</p> -->
+                            <div>
+                                <h3>Geometry</h3>
+                                <p class="sous-article">
+                                    Most objects are geometries formed from primitives such as the lamp or letter. 
+                                    Others like the skull are geometries imported by .obj format from the Free3D site. 
+                                    In order to stay within a minimal data storage framework, it had to be decimated.
+                                </p>
+                            </div>
+                            <div>
+                                <h3>Light and shadow</h3>
+                                <p class="sous-article">
+                                In order to be able to represent all imaginable shades on the board, the light and shadows can be modulated via the GUI.  
+                                On the other hand, the management of lights and shadows must be done for each of the primitives composing a geometry such as the lamp.</p>
+                            </div>
+                            <div>
+                                <h3>Skybox</h3>
+                                <p class="sous-article">
+                                    In order to keep the essence of the painting in terms of its shades of light, a black Skybox was chosen for this purpose.                                                
+                                </p>
+                            </div>
+                            <div>
+                                <h3>Shaders</h3>
+                                <p class="sous-article">
+                                    The shader is best used on the metallic texture of the lamp, in order to have a more appropriate rendering, I chose an anisotropic metallic rendering: the light reflection is then composed of two normals instead of one.</p>
+                            </div>
+                        <!-- <div class="box_div2">
+                            <table>
+                                <tr>
+                                    <th colspan="2">Exemple de jeux indépendants</th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Nom du Jeu
+                                    </th>
+                                    <th>
+                                        Nombre de Ventes
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Minecraft
+                                    </td>
+                                    <td>
+                                        200 millions
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Undertale
+                                    </td>
+                                    <td>
+                                        plus d'un million
+                                    </td>
+                                </tr>
+                            </table>
+                        </div> -->
+                    </div>
+                    <!-- <div class="box">
+                        <h4 class="sous-titre">Construction de la scène</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+                            culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+                            culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div> -->
+                </article>
+            </section>
+            <footer>
+                <nav>
+                    <ul>
+                        <a href="https://github.com/Szarin" ><img id="icon3" class="icon" src="./res/image/github.png"></a>
+                        <a href="https://www.linkedin.com/in/guillaume-schneider/"><img id="icon4" class="icon" src="./res/image/linkedin.png"></a>
+                    </ul>
+                </nav>            
+            </footer>
+        </div>
+    </BODY>
+</HTML>
